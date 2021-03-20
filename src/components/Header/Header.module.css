@@ -1,0 +1,34 @@
+.header{
+    grid-area: h;
+    background-color: #fff;
+
+    display: grid;
+    grid-template-columns: minmax(15em, auto) 2fr 10fr minmax(15em, auto);
+
+}
+.logo{
+    grid-column: 2/3;
+    font-size: 30px ;
+    font-weight: 600;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+
+    text-decoration: none;
+    color: #000;
+}
+.logo:hover{
+    transform: translateY(1px);
+}
+.region{
+    font-size: 13px;
+    align-self: flex-start;
+    margin-top: 5px         ;
+    color: #282c34;
+}
+.icon{
+    color: crimson;
+    align-self: center;
+    margin-top: 8px;
+}

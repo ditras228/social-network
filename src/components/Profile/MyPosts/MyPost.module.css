@@ -1,0 +1,33 @@
+.content{
+  display: grid;
+  grid-gap: 10px;
+  padding-top: 25px;
+  border-top: 1px solid #282c34;
+}
+.title{
+  font-size: 20px;
+}
+.textarea{
+  border: none;
+  border-bottom: 1px solid #282c34;
+  resize: none;
+  padding: 15px 10px 0 20px;
+  font-size: 17px;
+
+}
+
+.button{
+  padding: 10px 25px;
+  font-size: 17px;
+  text-transform: uppercase;
+  justify-self: right;
+
+  border: none;
+  border-radius: 20px;
+  background-color: crimson;
+  color: #fff;
+
+  transition: background-color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+
+}

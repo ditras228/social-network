@@ -1,0 +1,10 @@
+.main{
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 50px;
+}
+.dialogs{
+    grid-column: 2/3;
+}
+.messages{
+    grid-column: 3/4;
+}

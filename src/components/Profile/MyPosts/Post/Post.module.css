@@ -12,12 +12,7 @@
     grid-column-gap: 15px  ;
 
 }
-.autor{
-    font-size: 21px;
-    font-weight: 400;
-    grid-column: 2/3;
-}
-.text{
+.auto.text{
 
     font-size: 16px;
 }

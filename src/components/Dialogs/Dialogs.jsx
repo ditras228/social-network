@@ -7,8 +7,8 @@ import MessageItem from "./MessageItem/MessageItem";
 const Dialogs = (props)=>{
 
 
-   let dialogsElements = props.dialogs.map(d=> <DialogsItem id={d.id} name={d.name} />)
-   let messagesElements = props.messages.map(d=> <MessageItem id={d.id} name={d.message}/>)
+   let dialogsElements = props.state.dialogs.map(d=> <DialogsItem id={d.id} name={d.name} />)
+   let messagesElements = props.state.messages.map(d=> <MessageItem id={d.id} name={d.message}/>)
 
 
     return(
@@ -20,6 +20,11 @@ const Dialogs = (props)=>{
         </div>
             <div className={s.messages}>
                 {messagesElements}
+
+        </div>
+        <div className={s.send_message}>
+            <textarea name="send" id="" ></textarea>
+            <button>Send</button>
         </div>
 
     </div>

@@ -47,7 +47,7 @@ const ProfileInfo = (props) => {
                             <div className={s.item_value}>thestate.ru</div>
                         </div>
                     </div>
-                    <MyPost posts={props.posts}/>
+                    <MyPost posts={props.posts} addPost={props.addPost}/>
                 </div>
             </div>
         </div>

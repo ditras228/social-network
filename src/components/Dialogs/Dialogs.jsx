@@ -1,39 +1,36 @@
-import  s from './Dialogs.module.css';
+import s from './Dialogs.module.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
-import  React from 'react';
+import React from 'react';
+import {messageSendCreactor, updateNewMessageTextCreator} from "../../redux/dialogs-reducer";
 
 
-const Dialogs = (props)=>{
-   let dialogsElements = props.state.dialogsPage.dialogs.map(d=> <DialogsItem id={d.id} name={d.name} />)
-   let messagesElements = props.state.dialogsPage.messages.map(d=> <MessageItem id={d.id} name={d.message}/>)
-   let messageText= React.createRef();
-    let updateMessageText=()=>{
-        let text = messageText.current.value;
-        props.dispatch({type: 'UPDATE-MESSAGE-TEXT', newText: text});
+const Dialogs = (props) => {
+    let dialogsElements = props.dialogs.dialogs.map(d => <DialogsItem id={d.id} name={d.name}/>)
+    let messagesElements = props.dialogs.messages.map(d => <MessageItem id={d.id} name={d.text}/>)
+    let messageText = React.createRef();
+    let onMessageSend=()=>{
+        props.messageSend();
     }
-    let messagePost=()=>{
-        props.dispatch({type: 'MESSAGE-POST'});
+    let onUpdateMessageText=()=>{
+        props.updateMessageText(messageText.current.value);
     }
-    return(
-    <div className={s.main}>
-        <div className={s.dialogs}>
-            {dialogsElements}
-
-
-        </div>
+    return (
+        <div className={s.main}>
+            <div className={s.dialogs}>
+                {dialogsElements}
+            </div>
             <div className={s.messages}>
                 {messagesElements}
+            </div>
+            <div className={s.send_message}>
+                <textarea ref={messageText} onChange={onUpdateMessageText}  value={props.dialogs.newMessageText}/>
+                <button onClick={onMessageSend}>Send</button>
+            </div>
 
         </div>
-        <div className={s.send_message}>
-            <textarea name="send"  ref={messageText} id="" onChange={updateMessageText} value={props.state.dialogsPage.newMessageText}></textarea>
-            <button onClick={messagePost}>Send</button>
-        </div>
-
-    </div>
     )
 
 };
 
-export default  Dialogs;
+export default Dialogs;

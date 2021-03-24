@@ -1,4 +1,3 @@
-import  s from './../Dialogs.module.css';
 
 
 

@@ -1,5 +1,6 @@
 import s from './ProfileInfo.module.css';
 import MyPost from "../MyPosts/MyPost";
+import MyPostContainer from "../MyPosts/MyPostContainer";
 
 const ProfileInfo = (props) => {
     return (
@@ -47,7 +48,7 @@ const ProfileInfo = (props) => {
                             <div className={s.item_value}>thestate.ru</div>
                         </div>
                     </div>
-                    <MyPost posts={props.posts} dispatch={props.dispatch} />
+                    <MyPostContainer posts={props.posts} dispatch={props.dispatch} />
                 </div>
             </div>
         </div>

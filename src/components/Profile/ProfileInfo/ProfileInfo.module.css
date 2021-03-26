@@ -45,7 +45,7 @@
 }
 .item{
   display: grid;
-  grid-template-columns: 1px 1fr 1fr 100px 500px;
+  grid-template-columns: 1px auto 1fr auto 500px;
 }
 .item span{
   border-bottom: 1px dotted #282c34 ;

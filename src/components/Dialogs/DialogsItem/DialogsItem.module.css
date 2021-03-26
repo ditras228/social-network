@@ -1,0 +1,12 @@
+.item{
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-gap: 10px;
+    padding-bottom: 10px;
+}
+.photo{
+    grid-column: 1/2;
+}
+.name{
+    font-size: 18px;
+}

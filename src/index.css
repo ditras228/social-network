@@ -53,7 +53,7 @@ button{
     border: none;
     border-radius: 20px;
     background-color: crimson;
-    color: #fff;
+    color: #ffffff;
 
     transition: background-color .2s ease-in-out;
     transition: color .2s ease-in-out;

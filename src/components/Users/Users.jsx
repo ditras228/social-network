@@ -1,23 +1,33 @@
 import React from 'react';
 import s from './Users.module.css'
 import * as axios from "axios";
-import {render} from "@testing-library/react";
 
 class Users extends React.Component {
-    constructor(props) {
+    componentDidMount() {
 
-        super(props);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
                 this.props.setUsers(response.data.items);
-                 this.props.setTotalUsersCount(response.data.totalCount);
-                 console.log(response.data);
-            }
+                this.props.setTotalUsersCount(response.data.totalCount)
+
+        }
+
         );
     }
+    onPageChanged= (p)=>{
+        debugger
+        this.props.setCurrentPage(p);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
+            .then(response => {
+                    this.props.setUsers(response.data.items);
+                console.log(response);
+                }
 
+            );
+    }
 
     render() {
-        let pagesCount =  Math.ceil( this.props.totalUsersCount / this.props.pageSize);
+        let pagesCount =  Math.ceil( this.props.totalCount / this.props.pageSize);
         let pages = [];
         for (let i = 1; i <= pagesCount; i++) {
             pages.push(i)
@@ -26,20 +36,20 @@ class Users extends React.Component {
 
         return <div className={s.main}>{
             <div className={s.content}>
-
+                <div className={s.pages}>
                 {pages.map(p => {
-                    return <div onClick={()=>this.props.setCurrentPage(p)}
+                    return <div onClick={()=>   this.onPageChanged(p)}
                                 className={this.props.currentPage === p && s.selectedPage}>{p}</div>
                 }
                     )}
-
+                </div>
 
                     <div className={s.title}>Users:</div>
                 {
                     this.props.state.users.map(u => <div className={s.item} key={u.id}>
                     <div className={s.item_right}>
                     <img className={s.photo}
-                    src={u.photoLink === undefined ? 'https://placehold.it/80x80' : u.photoLink} alt=""/>
+                    src={u.photos.small === null ? 'https://placehold.it/80x80' : u.photos.small} alt=""/>
                     <div className={s.name}>{u.name}</div>
                     </div>
                 {u.followed

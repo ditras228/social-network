@@ -5,7 +5,7 @@ let mapStateToProps=(state)=>{
     return{
         state: state.usersPage,
         pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
+        totalCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage
     }
 };
@@ -19,12 +19,15 @@ let mapDispatchToProps=(dispatch)=>{
         },
         setUsers:(users)=>{
             dispatch(setUsersAC(users))
+
         },
         setCurrentPage:(p)=>{
             dispatch(setCurrentPageAC(p))
+
         },
         setTotalUsersCount:(c)=>{
             dispatch(setTotalUsersCountAC(c))
+
     }
     }
 }

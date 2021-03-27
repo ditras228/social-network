@@ -35,6 +35,19 @@
     grid-row: 1/2;
     grid-column: 2/3;
 }
+.pages{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.page{
+    display: inline-block;
+}
+.page:hover{
+    cursor: pointer;
+}
 .selectedPage{
     font-weight: 600;
+}
+.selectedPage:hover{
+    cursor: pointer;
 }

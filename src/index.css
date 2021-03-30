@@ -59,6 +59,9 @@ button{
     transition: color .2s ease-in-out;
 
 }
+button:disabled{
+    background-color: gray;
+}
 button:hover{
     cursor: pointer ;
 }

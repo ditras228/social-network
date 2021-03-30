@@ -1,15 +1,14 @@
-
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
 
     return (
         <div>
-        <ProfileInfo/>
+            <ProfileInfo profilePage={props.profilePage}/>
         </div>
 
     )
 
-};
+}
 
 export default Profile;

@@ -5,7 +5,7 @@ import React from 'react';
 
 const MyPost = (props) => {
     let PostsElements = props.profilePage.posts.map((post) => {
-        return <Post name={post.name} comment={post.text}/>
+        return <Post key={post.id} name={post.name} comment={post.text}/>
     })
     let postText = React.createRef();
     let onAddPost = () => {

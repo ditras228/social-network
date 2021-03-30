@@ -2,7 +2,7 @@ import s from './Dialogs.module.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
 import React from 'react';
-
+import {Redirect } from 'react-router-dom'
 const Dialogs = (props) => {
     let dialogsElements = props.state.dialogs.map(d => <DialogsItem id={d.id} key={d.id} name={d.name}/>)
     let messagesElements = props.state.messages.map(m => <MessageItem id={m.id} key={m.id} name={m.text}/>)
@@ -13,6 +13,7 @@ const Dialogs = (props) => {
     let onUpdateMessageText = () => {
         props.updateMessageText(messageText.current.value);
     }
+    if(!props.isAuth) return  <Redirect to ={'/login'}/>
     return (
         <div className={s.main}>
             <div className={s.content}>

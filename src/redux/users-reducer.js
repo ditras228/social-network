@@ -1,7 +1,4 @@
 import {usersAPI} from "../api";
-import s from "../components/Users/Users.module.css";
-import * as axios from "axios";
-import React from "react";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -71,7 +68,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state, followingInProcess: action.isFetching
                     ? [...state.followingInProcess, action.userId]
-                    : state.followingInProcess.filter(id => id != action.userId)
+                    : state.followingInProcess.filter(id => id !== action.userId)
 
             }
         default:
@@ -81,8 +78,8 @@ const usersReducer = (state = initialState, action) => {
 
 }
 export default usersReducer;
-export const followSucsess = (userId) => ({type: FOLLOW, userId: userId});
-export const unfollowSucsess = (userId) => ({type: UNFOLLOW, userId: userId});
+export const followSuccess = (userId) => ({type: FOLLOW, userId: userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId: userId});
 export const setUsers = (users) => ({type: SET_USERS, users: users});
 export const setCurrentPage = (newCurrentPage) => ({type: SET_CURRENT_PAGE, newCurrentPage: newCurrentPage});
 export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount: totalCount});
@@ -94,13 +91,14 @@ export const toggleIsFollowingProcess = (isFetching, userId) => ({
 });
 
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize)
+        usersAPI.getUsers(page, pageSize)
             .then(data => {
                     dispatch(setUsers(data.items));
                     dispatch(setTotalUsersCount(data.totalCount));
+                    dispatch(setCurrentPage(page));
                     dispatch(toggleIsFetching(false));
                 }
             );
@@ -112,7 +110,7 @@ export const follow = (userId) => {
         usersAPI.follow(userId)
             .then(response => {
                     if (response.data.resultCode === 0)
-                        dispatch(followSucsess(userId));
+                        dispatch(followSuccess(userId));
                     dispatch(toggleIsFollowingProcess(false, userId));
                 }
             )
@@ -125,7 +123,7 @@ export const unfollow = (userId) => {
         usersAPI.unfollow(userId)
             .then(response => {
                     if (response.data.resultCode === 0)
-                        dispatch(unfollowSucsess(userId));
+                        dispatch(unfollowSuccess(userId));
                     dispatch(toggleIsFollowingProcess(false, userId));
                 }
             )

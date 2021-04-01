@@ -12,8 +12,10 @@ const Header = (props) => {
             </div>
             {
 
-                u.isAuth?<div className={s.login}>{u.login}</div>
-            :<>LogIn</>
+                u.isAuth
+                    ?<div className={s.login}>{u.login}
+                    <button onClick={props.data.logout}>LogOut</button></div>
+                    :<button onClick={props.data.logout}>LogIn</button>
             }
         </header>
     )

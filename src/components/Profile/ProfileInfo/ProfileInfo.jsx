@@ -4,6 +4,7 @@ import Fetch from "../../Common/Fetch/Fetch";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
+    
     let p = props.profilePage.profile;
     if(!p) {
 

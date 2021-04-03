@@ -1,0 +1,21 @@
+
+.pages{
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+}
+.page{
+    display: inline-block;
+    text-align: center;
+}
+.page:hover{
+    cursor: pointer;
+}
+.selectedPage{
+    font-weight: 600;
+    text-align: center;
+
+}
+.selectedPage:hover{
+    cursor: pointer;
+}

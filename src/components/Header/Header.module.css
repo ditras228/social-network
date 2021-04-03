@@ -3,7 +3,7 @@
     background-color: #fff;
 
     display: grid;
-    grid-template-columns: minmax(15em, auto) 2fr 10fr minmax(15em, auto);
+    grid-template-columns: minmax(25em, auto) 2fr 10fr minmax(25em, auto);
 
 }
 .logo{
@@ -33,5 +33,17 @@
     margin-top: 8px;
 }
 .login{
+    display: inline-block;
+    grid-column: 2/3;
+    justify-self: right;
+}
+.main{
     align-self: center;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.logOut{
+    display: grid;
+    grid-template-columns: 1fr 15px;
+    grid-column-gap: 10px;
 }

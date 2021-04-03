@@ -1,7 +1,7 @@
 import './App.css';
 import Nav from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {HashRouter  , Route} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -25,7 +25,7 @@ class App extends React.Component {
         else
         return (
 
-            <BrowserRouter>
+            <HashRouter>
 
                 <div className="app-wrapper">
                     <HeaderContainer/>
@@ -37,7 +37,7 @@ class App extends React.Component {
                         <Route path='/login' render={() => <Login/>}/>
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
 
         );
     }

@@ -4,7 +4,9 @@ const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const UPDATE_STATUS = 'UPDATE_STATUS';
-let initialState={
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
+const SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS';
+let initialState = {
     posts: [
         {id: 1, name: 'dmitry'},
         {id: 2, name: 'vaider'},
@@ -13,8 +15,8 @@ let initialState={
     newPostText: '',
     status: 'loading'
 }
-const profileReducer = (state=initialState, action) => {
-    switch (action.type){
+const profileReducer = (state = initialState, action) => {
+    switch (action.type) {
         case ADD_POST: {
             let newPost = {
                 id: 4,
@@ -23,27 +25,41 @@ const profileReducer = (state=initialState, action) => {
             };
             return {
                 ...state,
-                posts: [...state.posts,newPost],
+                posts: [...state.posts, newPost],
                 newPostText: ''
             };
         }
-        case SET_USER_PROFILE:{
-            return{
+        case SET_USER_PROFILE: {
+            return {
                 ...state,
                 profile: action.profile
             }
         }
-            case SET_STATUS:{
-            return{
+        case SET_STATUS: {
+            return {
                 ...state,
                 status: action.status,
 
             }
         }
-        case UPDATE_STATUS:{
-            return{
+        case UPDATE_STATUS: {
+            return {
                 ...state,
                 status: action.status,
+
+            }
+        }
+        case SAVE_PHOTO_SUCCESS: {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+
+            }
+        }
+        case SAVE_PROFILE_SUCCESS: {
+            return {
+                ...state,
+                profile: action.profile
 
             }
         }
@@ -54,20 +70,21 @@ const profileReducer = (state=initialState, action) => {
 }
 export default profileReducer;
 export const addPostCreator = (text) => ({type: ADD_POST, text: text});
-export const setUserProfile= (profile) => ({type: SET_USER_PROFILE, profile: profile})
-export const setStatus= (status) => ({type: SET_STATUS, status: status})
-
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile: profile})
+export const setStatus = (status) => ({type: SET_STATUS, status: status})
+export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
+export const saveProfileSuccess = (profile) => ({type: SAVE_PROFILE_SUCCESS, profile})
 export const getProfile = (userId) => {
-    return (dispatch)=> {
+    return (dispatch) => {
         usersAPI.getProfile(userId)
             .then(response => {
-                dispatch(setUserProfile(response.data));
+                    dispatch(setUserProfile(response.data));
                 }
             );
     }
 }
 export const getStatus = (status) => {
-    return (dispatch)=> {
+    return (dispatch) => {
         profileAPI.getStatus(status)
             .then(response => {
                     dispatch(setStatus(response.data));
@@ -77,11 +94,31 @@ export const getStatus = (status) => {
     }
 }
 export const updateStatus = (status) => {
-    return (dispatch)=> {
+    return (dispatch) => {
         profileAPI.updateStatus(status)
             .then(response => {
-                if(response.data.resultCode===0)
-                    dispatch(setStatus(status));
+                    if (response.data.resultCode === 0)
+                        dispatch(setStatus(status));
+                }
+            );
+    }
+}
+export const savePhoto = (photoFile) => {
+    return (dispatch) => {
+        profileAPI.savePhoto(photoFile)
+            .then(response => {
+                    if (response.data.resultCode === 0)
+                        dispatch(savePhotoSuccess(photoFile));
+                }
+            );
+    }
+}
+export const saveProfile = (profile) => {
+    return (dispatch) => {
+        profileAPI.saveProfile(profile)
+            .then(response => {
+                    if (response.data.resultCode === 0)
+                        dispatch(saveProfileSuccess(profile));
                 }
             );
     }

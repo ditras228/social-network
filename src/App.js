@@ -5,7 +5,7 @@ import {HashRouter  , Route} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import Login from "./components/Login/LoginContainer";
 import React from "react";
 import {initializeApp} from "./redux/app-reducer";
 import {connect} from "react-redux";

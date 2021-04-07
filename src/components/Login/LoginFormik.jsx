@@ -1,7 +1,8 @@
 import s from "./Login.module.css";
 import React from "react";
 
-let LoginFormik = ({formik}) => {
+let LoginFormik = ({formik, captchaUrl}) => {
+    console.log(captchaUrl)
     return (
         <div className={s.container}>
 
@@ -40,6 +41,11 @@ let LoginFormik = ({formik}) => {
                     disabled={!formik.isValid && !formik.dirty}
                 >LogIn
                 </button>
+                {captchaUrl && <img src={captchaUrl}/>}
+                {captchaUrl && <input type="text"
+                                        name="captcha"
+                                        value={formik.values.captcha}
+                                        onChange={formik.handleChange}/>}
             </form>
         </div>
     )

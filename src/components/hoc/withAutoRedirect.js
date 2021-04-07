@@ -10,7 +10,7 @@ export const withAutoRedirect =(Component)=>{
      class RedirectComponent extends React.Component{
         render() {
 
-            if (!this.props.isAuth) return  <Redirect to={'/login'}/>
+            if (!this.props.isAuth) return  <Redirect to={'/logIn'}/>
             return <Component {...this.props}/>
         }
     }

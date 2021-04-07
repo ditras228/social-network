@@ -1,5 +1,4 @@
 import ProfileDataForm from "./ProfileDataForm";
-import ProfileInfo from "./ProfileInfo";
 import s from './ProfileInfo.module.css'
 const ProfileData = ({lookingForAJob, lookingForAJobDescription, fullName, contacts, goToEditMode,editMode,onSubmit}) => {
   if(editMode===false)
@@ -38,7 +37,7 @@ const ProfileData = ({lookingForAJob, lookingForAJobDescription, fullName, conta
                          lookingForAJobDescription={lookingForAJobDescription}
                          fullName={fullName}
                          contacts={contacts}
-                             onSubmit={onSubmit}
+                         onSubmit={onSubmit}
 
             />
         )

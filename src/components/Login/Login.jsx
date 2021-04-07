@@ -14,10 +14,11 @@ const Login = (props) => {
             initialValues: {
                 email: '',
                 password: '',
-                rememberMe: false
+                rememberMe: false,
+                captcha: ''
             },
             onSubmit: values => (
-                props.props.login(values.email, values.password, values.rememberMe)
+                props.props.login(values.email, values.password, values.rememberMe,values.captcha)
             ),
             validateOnBlur: values => (
                 console.log(values.email)
@@ -30,7 +31,7 @@ const Login = (props) => {
         return <Redirect to={'/profile'}/>
     }
     return (
-        <LoginFormik formik={formik}/>
+        <LoginFormik formik={formik} captchaUrl={props.props.captchaUrl}/>
     )
 }
 export default Login

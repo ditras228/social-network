@@ -4,46 +4,61 @@ import React from "react";
 let ProfileDataForm= ({lookingForAJob, lookingForAJobDescription, fullName, contacts, onSubmit})=>{
     const formik = useFormik({
         initialValues:{
-            lookingForAJob: true,
+            lookingForAJob: lookingForAJob,
             lookingForAJobDescription: lookingForAJobDescription,
             fullName: fullName,
             contacts: contacts,
+            aboutMe: 'test'
         },
         onSubmit: values => {
+            debugger
             onSubmit(values)
         }
     });
     return(
         <form  onSubmit={formik.handleSubmit}>
-            <button >onSubmit</button>
+            <button type={'submit'} >onSubmit</button>
             <div>
-                <input name={'lookingForAJob'} type="checkbox"  value={formik.values.lookingForAJob}/>
+                <input name={'lookingForAJob'}
+                       type="checkbox"
+                       checked={formik.values.lookingForAJob}
+                       onChange={formik.handleChange}
+                />
+
             </div>
 
 
                 <div>
                     <input name={'lookingForAJobDescription'}
                            type="text"
-                           placeholder={'lookingForAJobDescription'} v
-                           alue={formik.values.lookingForAJobDescription}/>
+                           placeholder={'lookingForAJobDescription'}
+                           value={formik.values.lookingForAJobDescription}
+                           onChange={formik.handleChange}
+                           onBlur={formik.handleChange}
+                    />
+
                 </div>
             <div>
                 <input name={'fullName'}
                        type="text"
                        placeholder={'fullName'}
-                       value={formik.values.fullName}/>
+                       value={formik.values.fullName}
+                       onChange={formik.handleChange}
+                       onBlur={formik.handleChange}/>
             </div>
 
 
             {
                 Object.keys(contacts).map(key=>{
+                    console.log(key)
                     return (
-                        <div>
                             <input type="text"
                                    key={key}
-                                   placeholder={key }
-                                   value={''}/>
-                        </div>
+                                   value={contacts[key]}
+                                   name={'contacts.'+key}
+                                   onChange={formik.handleChange}
+                            />
+
 
                     )
                 })

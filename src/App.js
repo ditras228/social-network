@@ -1,7 +1,7 @@
 import './App.css';
 import Nav from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import {HashRouter  , Route} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -25,19 +25,23 @@ class App extends React.Component {
         else
         return (
 
-            <HashRouter>
+            <BrowserRouter>
 
                 <div className="app-wrapper">
                     <HeaderContainer/>
                     <Nav/>
                     <div className="app-wrapper-content">
+                        <Switch>
+                        <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                         <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                         <Route path='/users' render={() => <UsersContainer/>}/>
-                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path='/logIn' render={() => <Login/>}/>
+                        <Route path='*' render={() => <div>404</div>}/>
+                        </Switch>
                     </div>
                 </div>
-            </HashRouter>
+            </BrowserRouter>
 
         );
     }

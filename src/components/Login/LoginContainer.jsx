@@ -1,5 +1,5 @@
 import React from 'react';
-import {login, logout} from "../../redux/auth-reducer";
+import {logIn, logout} from "../../redux/auth-reducer";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import Login from "./Login";
@@ -13,8 +13,10 @@ class LoginContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+
     return {
         authReducer: state.authReducer,
+        captchaUrl: state.authReducer.captchaUrl
     }
 }
-export default connect(mapStateToProps, {login, logout})(LoginContainer)
+export default connect(mapStateToProps, {login: logIn, logout})(LoginContainer)

@@ -1,6 +1,5 @@
 {
   "homepage": "https://ditras228.github.io/social-network/",
-
   "name": "social-network",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +12,10 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.37",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
     "axios": "^0.21.1",
     "final-form": "^4.20.2",
     "formik": "^2.2.6",
@@ -25,13 +28,13 @@
     "react-scripts": "4.0.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "typescript": "^4.2.3",
     "web-vitals": "^1.1.1",
     "yup": "^0.32.9"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

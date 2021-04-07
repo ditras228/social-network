@@ -43,7 +43,7 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     profilePage: state.profilePage,
     status: state.profilePage.status,
-    userId: state.authReducer.id,
+    userId: state.authReducer.userId,
 })
 export default compose(
     connect(mapStateToProps, {getProfile, getStatus, getAuthUserData, savePhoto, saveProfile}),

@@ -1,4 +1,4 @@
-import {messageSendCreator} from "../../redux/dialogs-reducer";
+import {actions} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
     import {withAutoRedirect} from './../hoc/withAutoRedirect'
@@ -12,7 +12,7 @@ let mapStateToProps = (state) => {
 let dispatchToProps = (dispatch) => {
     return {
         messageSend: (text) => {
-            dispatch(messageSendCreator(text));
+            dispatch(actions.messageSendCreator(text));
         }
     }
 }

@@ -30,7 +30,7 @@ const ProfileInfo = (props) => {
                                      lookingForAJobDescription={p.lookingForAJobDescription}
                                      fullName={p.fullName}
                                      contacts={p.contacts}
-                                     goToEditMode={()=>{setEditMode(true)}}
+                                     goToEditMode={()=>{setEditMode(!editMode)}}
                                      editMode={editMode}
                                      onSubmit={onSubmit}
                         />

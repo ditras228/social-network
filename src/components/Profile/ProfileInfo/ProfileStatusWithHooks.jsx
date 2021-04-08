@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
-import {getStatus, setStatus, updateStatus} from "../../../redux/profile-reducer";
+import {getStatus , updateStatus} from "../../../redux/profile-reducer";
 import {GrStatusInfo} from "react-icons/gr";
 
 const ProfileStatusWithHooks = (props) => {
@@ -41,4 +41,4 @@ let mapStateToProps = (state) => {
 
     }
 }
-export default connect(mapStateToProps, {getStatus, setStatus, updateStatus})(ProfileStatusWithHooks);
+export default connect(mapStateToProps, {getStatus, updateStatus})(ProfileStatusWithHooks);

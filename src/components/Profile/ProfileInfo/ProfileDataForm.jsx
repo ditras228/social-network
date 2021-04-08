@@ -1,7 +1,7 @@
 import {useFormik} from "formik";
 import React from "react";
 
-let ProfileDataForm= ({lookingForAJob, lookingForAJobDescription, fullName, contacts, onSubmit})=>{
+let ProfileDataForm= ({lookingForAJob, lookingForAJobDescription, fullName, contacts, onSubmit, goToEditMode})=>{
     const formik = useFormik({
         initialValues:{
             lookingForAJob: lookingForAJob,
@@ -11,8 +11,8 @@ let ProfileDataForm= ({lookingForAJob, lookingForAJobDescription, fullName, cont
             aboutMe: 'test'
         },
         onSubmit: values => {
-            debugger
             onSubmit(values)
+            goToEditMode()
         }
     });
     return(

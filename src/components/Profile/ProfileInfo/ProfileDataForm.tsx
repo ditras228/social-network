@@ -1,7 +1,15 @@
 import {useFormik} from "formik";
 import React from "react";
-
-let ProfileDataForm= ({lookingForAJob, lookingForAJobDescription, fullName, contacts, onSubmit, goToEditMode})=>{
+type PropsType={
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: Array<string>
+    onSubmit: () => void
+    goToEditMode: () => void
+}
+let ProfileDataForm: React.FC<PropsType>= ({lookingForAJob, lookingForAJobDescription, fullName,
+                          contacts, onSubmit, goToEditMode})=>{
     const formik = useFormik({
         initialValues:{
             lookingForAJob: lookingForAJob,
@@ -11,6 +19,7 @@ let ProfileDataForm= ({lookingForAJob, lookingForAJobDescription, fullName, cont
             aboutMe: 'test'
         },
         onSubmit: values => {
+            // @ts-ignore
             onSubmit(values)
             goToEditMode()
         }
@@ -49,12 +58,12 @@ let ProfileDataForm= ({lookingForAJob, lookingForAJobDescription, fullName, cont
 
 
             {
-                Object.keys(contacts).map(key=>{
-                    console.log(key)
+                        Object.keys(contacts).map( key =>{
+                    // @ts-ignore
                     return (
                             <input type="text"
-                                   key={key}
-                                   value={contacts[key]}
+                                   key ={key}
+                                       // value={contacts[key]}
                                    name={'contacts.'+key}
                                    onChange={formik.handleChange}
                             />

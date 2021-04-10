@@ -2,6 +2,7 @@
 export type PostType = {
     id: number,
     name: string
+    text: string
 }
 export type ContactsType = {
     github: string
@@ -18,7 +19,9 @@ export type ProfileType = {
     lookingForAJobDescription: string
     fullName: string
     contacts: ContactsType
-    photos: PostType
+    photos: PhotosType
+    posts: any
+    status: string
 }
 export type PhotosType = {
     small: string | null,

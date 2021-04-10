@@ -1,8 +1,14 @@
 import s from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import React from "react";
-
-let User = ({user, followingInProcess,follow,unfollow}) =>{
+import {UserType} from "../../types/types";
+type PropsType = {
+    user: UserType
+    followingInProcess: Array<number>
+    unfollow: (userId:number) => void
+    follow: (userId:number) => void
+}
+let User: React.FC<PropsType> = ({user, followingInProcess,follow,unfollow}) =>{
     return (
 
         <div className={s.item} key={user.id}>

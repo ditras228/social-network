@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 
@@ -83,11 +83,11 @@ let mapStateToProps = (state:AppStateType):MapStatePropsType => {
 type OwnPropsType ={}
 
 export default compose(
-            connect<MapStatePropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>
+            connect
     (mapStateToProps, {
         follow,
         unfollow,
         getUsers: requestUsers,
     }),
-    withAutoRedirect
+    // withAutoRedirect
 )(UsersContainer)

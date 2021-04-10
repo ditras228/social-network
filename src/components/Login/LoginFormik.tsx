@@ -1,7 +1,10 @@
 import s from "./Login.module.css";
-import React from "react";
-
-let LoginFormik = ({formik, captchaUrl}) => {
+import React, {Component} from "react";
+type PropsType={
+    formik: any
+    captchaUrl:string
+}
+let LoginFormik: React.ComponentType<PropsType> = ({formik, captchaUrl}) => {
     console.log(captchaUrl)
     return (
         <div className={s.container}>

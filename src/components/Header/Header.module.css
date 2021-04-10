@@ -4,7 +4,7 @@
 
     display: grid;
     grid-template-columns: minmax(25em, auto) 2fr 10fr minmax(25em, auto);
-
+    position: absolute;
 }
 .logo{
     grid-column: 2/3;

@@ -2,23 +2,27 @@ import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {getStatus , updateStatus} from "../../../redux/profile-reducer";
 import {GrStatusInfo} from "react-icons/gr";
-
-const ProfileStatusWithHooks = (props) => {
+import {AppStateType} from "../../../redux/redux-store";
+import {ProfileType} from "../../../types/types";
+type PropsType = {
+    profilePage: any
+}
+    const ProfileStatusWithHooks: React.ComponentType<PropsType> = ({profilePage}) => {
     let [editMode, setEditMode] = useState(false)
-    let [status, setStatus] = useState(props.profilePage.status)
+    let [status, setStatus] = useState(profilePage.status)
     const activateEditMode = () => {
         setEditMode(true)
     }
     const deactivateEditMode = () => {
         setEditMode(false)
-        props.updateStatus(status)
+        updateStatus(status)
     }
-    const onStatusChange = (e) => {
+    const onStatusChange = (e:any) => {
         setStatus(e.currentTarget.value)
     }
     useEffect(() => {
-        setStatus(props.profilePage.status)
-    }, [props.profilePage.status])
+        setStatus(profilePage.status)
+    }, [profilePage.status])
     return (
 
         <form>{
@@ -35,10 +39,11 @@ const ProfileStatusWithHooks = (props) => {
         } </form>
     )
 }
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         profilePage: state.profilePage,
 
     }
 }
-export default connect(mapStateToProps, {getStatus, updateStatus})(ProfileStatusWithHooks);
+// @ts-ignore
+export default connect<React.ComponentType<PropsType>>(mapStateToProps, {getStatus, updateStatus})(ProfileStatusWithHooks);

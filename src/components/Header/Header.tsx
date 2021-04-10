@@ -1,8 +1,11 @@
 import s from './Header.module.css';
 import { RiQrCodeFill} from 'react-icons/ri';
 import { BiUserCircle,  ImExit} from "react-icons/all";
+type PropsType={
+    data: any
 
-const Header = (props) => {
+}
+const Header: React.ComponentType<PropsType> = (props) => {
         let u = props.data.data;
         return (
             <header className={s.header}>

@@ -3,9 +3,14 @@ import Post from './Post/Post';
 import {BiRepost} from 'react-icons/bi';
 import React from 'react';
 import {useFormik} from "formik";
-
-const MyPost = (props) => {
-    let PostsElements = props.profilePage.posts.map((post) => {
+import {PostType, ProfileType} from "../../../types/types";
+type PropsType={
+    profilePage: ProfileType
+    addPost: any
+    profile: any
+}
+const MyPost: React.FC<PropsType> = (props) => {
+    let PostsElements = props.profilePage.posts.map((post: PostType) => {
         return <Post key={post.id} name={post.name} comment={post.text}/>
     })
 
@@ -20,7 +25,7 @@ const MyPost = (props) => {
     )
 
 };
-const AddPostForm=(props)=>{
+const AddPostForm=(props: any)=>{
     const formik = useFormik(
         {
             initialValues: {
@@ -41,4 +46,5 @@ const AddPostForm=(props)=>{
         </form>
     )
 }
+// const MyPostMemorized = React.memo(MyPost)
 export default MyPost;

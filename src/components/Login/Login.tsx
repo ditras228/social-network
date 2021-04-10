@@ -3,8 +3,10 @@ import {useFormik} from 'formik';
 import {Redirect} from "react-router-dom";
 import * as yup from 'yup'
 import LoginFormik from "./LoginFormik";
-
-const Login = (props) => {
+type PropsType={
+    props:any
+}
+const Login: React.ComponentType<PropsType>= (props) => {
 
     const validationSchema = yup.object().shape({
         email: yup.string().email('Некорректный Email').required('Обязательно'),
@@ -19,9 +21,6 @@ const Login = (props) => {
             },
             onSubmit: values => (
                 props.props.login(values.email, values.password, values.rememberMe,values.captcha)
-            ),
-            validateOnBlur: values => (
-                console.log(values.email)
             ),
             validationSchema: validationSchema
         }

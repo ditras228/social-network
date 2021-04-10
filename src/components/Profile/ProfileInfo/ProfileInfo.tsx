@@ -6,16 +6,16 @@ import ProfileInfoHeader from "./ProfileInfoHeader";
 import ProfileData from "./ProileData";
 import {useState} from "react";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = (props:any) => {
     let p = props.profilePage.profile;
-    const onMainFileSelected = (e) => {
+    const onMainFileSelected = (e:any) => {
         if (e.target.files.length) {
             props.savePhoto(e.target.files[0])
         }
     }
 
     let [editMode, setEditMode]=useState(false);
-    let onSubmit =(formData)=>{
+        let onSubmit =(formData: any)=>{
         props.saveProfile(formData);
     }
     if (!p) {
@@ -25,7 +25,7 @@ const ProfileInfo = (props) => {
             <div className={s.main}>
                 <ProfileInfoHeader p={p} isOwner={props.isOwner} onMainFileSelected={onMainFileSelected}/>
                 <div className={s.content}>
-                        <ProfileStatusWithHooks/>
+                        <ProfileStatusWithHooks profilePage={props.profilePage}/>
                         <ProfileData lookingForAJob={p.lookingForAJob}
                                      lookingForAJobDescription={p.lookingForAJobDescription}
                                      fullName={p.fullName}
@@ -34,7 +34,7 @@ const ProfileInfo = (props) => {
                                      editMode={editMode}
                                      onSubmit={onSubmit}
                         />
-                        <MyPostContainer/>
+                        <MyPostContainer profile={props.profile} />
                 </div>
             </div>
         )

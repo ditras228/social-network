@@ -3,15 +3,24 @@ import Nav from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/LoginContainer";
-import React from "react";
+import React, {Component} from "react";
 import {initializeApp} from "./redux/app-reducer";
 import {connect} from "react-redux";
 import Fetch from "./components/Common/Fetch/Fetch";
+import {withSuspense} from "./components/hoc/withSupsense";
+import UsersContainer from "./components/Users/UsersContainer";
+import {AppStateType} from "./redux/redux-store";
 
-class App extends React.Component {
+const SuspendedDialogs  = withSuspense(DialogsContainer)
+const SuspendedProfile = withSuspense(ProfileContainer)
+
+type DispatchPropsType ={
+    initializeApp: ()=> void
+    initialized: boolean
+}
+class App extends Component<typeof mapStateToProps & DispatchPropsType> {
     componentDidMount() {
         this.props.initializeApp();
     }
@@ -33,8 +42,8 @@ class App extends React.Component {
                     <div className="app-wrapper-content">
                         <Switch>
                         <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                        <Route path='/profile/:userId?' render={() => <SuspendedProfile/>}/>
+                        <Route path='/dialogs' render={() => <SuspendedDialogs/>}/>
                         <Route path='/users' render={() => <UsersContainer/>}/>
                         <Route path='/logIn' render={() => <Login/>}/>
                         <Route path='*' render={() => <div>404</div>}/>
@@ -46,7 +55,7 @@ class App extends React.Component {
         );
     }
 }
-let mapStateToProps=(state)=>({
+let mapStateToProps=(state: AppStateType)=>({
     initialized: state.app.initialized
 })
 export default connect(mapStateToProps, {initializeApp})(App);

@@ -1,7 +1,16 @@
 import ProfileDataForm from "./ProfileDataForm";
 import s from './ProfileInfo.module.css'
-
-const ProfileData = ({
+import React from "react";
+type PropsType={
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: Array<string>
+    goToEditMode: ()=> void
+    editMode: boolean
+    onSubmit: any
+}
+const ProfileData: React.FC<PropsType> = ({
                          lookingForAJob,
                          lookingForAJobDescription,
                          fullName,
@@ -10,14 +19,14 @@ const ProfileData = ({
                          editMode,
                          onSubmit
                      }) => {
-    if (editMode === false)
+    if (!editMode)
         return (
             <>
 
                 <button onClick={goToEditMode}>Edit</button>
 
                 <div>
-                    <b>lookingForAJob</b>: {lookingForAJob === true && <span>yes</span> || <span>no</span>}
+                    <b>lookingForAJob</b>: {lookingForAJob && <span>yes</span> || <span>no</span>}
 
                 </div>
                 {
@@ -34,6 +43,7 @@ const ProfileData = ({
                 <div className={s.contacts}>
                     {
                         Object.keys(contacts).map(key => {
+                            // @ts-ignore
                             return <div key={key}>{key}: {contacts[key]}</div>
                         })
                     }

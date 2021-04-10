@@ -1,8 +1,8 @@
 import React from 'react';
 import {logIn, logout} from "../../redux/auth-reducer";
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
 import Login from "./Login";
+import {AppStateType} from "../../redux/redux-store";
 
 class LoginContainer extends React.Component {
     render() {
@@ -12,7 +12,7 @@ class LoginContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state:AppStateType) => {
 
     return {
         authReducer: state.authReducer,

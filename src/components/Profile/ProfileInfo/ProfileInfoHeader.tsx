@@ -1,7 +1,13 @@
 import s from "./ProfileInfo.module.css";
 import ProfileInfoHeaderBG from "./ProfileInfoHeaderBG";
-
-let ProfileInfoHeader = ({p, isOwner, onMainFileSelected} ) => {
+import {ProfileType} from "../../../types/types";
+import React from "react";
+type PropsType={
+    p: ProfileType
+    isOwner: boolean
+    onMainFileSelected: any
+}
+let ProfileInfoHeader: React.FC<PropsType> = ({p, isOwner, onMainFileSelected} ) => {
     return (
         <>
             <ProfileInfoHeaderBG/>

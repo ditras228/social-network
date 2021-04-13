@@ -2,16 +2,11 @@ import s from './Paginator.module.css'
 import React, {useState} from 'react'
 import {FaArrowLeft, FaArrowRight} from 'react-icons/all'
 
-type PropsType = {
-    totalCount: number
-    currentPage: number
-    onPageChanged: (pageNumber:number)=> void
-}
+
 
 const Paginator: React.FC<PropsType> = ({currentPage, onPageChanged, totalCount})=> {
     let pageSize = 10
     let portionSize = 5
-
 
     let pagesCount = Math.ceil(totalCount / pageSize)
     let portionCount = Math.ceil(pagesCount / portionSize)
@@ -33,7 +28,6 @@ const Paginator: React.FC<PropsType> = ({currentPage, onPageChanged, totalCount}
             }}><FaArrowLeft/></button>
             }
             {
-
                 pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map(p => {
@@ -49,4 +43,11 @@ const Paginator: React.FC<PropsType> = ({currentPage, onPageChanged, totalCount}
         </div>
     )
 }
+
 export default Paginator
+
+type PropsType = {
+    totalCount: number
+    currentPage: number
+    onPageChanged: (pageNumber:number)=> void
+}

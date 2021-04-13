@@ -1,8 +1,8 @@
-import React from "react";
-import {connect} from "react-redux";
-import Header from "./Header";
-import {getAuthUserData, logout } from "../../redux/auth-reducer";
-import {AppStateType} from "../../redux/redux-store";
+import React from 'react'
+import {connect} from 'react-redux'
+import Header from './Header'
+import {getAuthUserData, logout } from '../../redux/auth-reducer'
+import {AppStateType} from '../../redux/redux-store'
 type PropsType ={
     getAuthUserData: () => void
 }
@@ -18,7 +18,6 @@ class HeaderContainer extends React.Component<PropsType> {
     }
 
 }
-;
 let mapStateToProps = (state: AppStateType) => {
     return {
         data: {

@@ -28,7 +28,6 @@ code {
     grid-template-columns: minmax(25em, auto) minmax(10em, auto) 1fr minmax(25em, auto);
     grid-gap: 10px;
 }
-
 .app-wrapper-content {
     background-color: #fff;
     grid-area: c;

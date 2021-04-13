@@ -1,13 +1,5 @@
 import {instance, APIResponseType} from './api';
 
-type MeResponseDataType = {
-    id: number
-    email: string
-    login: string
-}
-type LoginResponseDate={
-    userId: number
-}
 export const authAPI = {
     me() {
         return instance.get<APIResponseType<MeResponseDataType>>(`auth/me`, {
@@ -20,4 +12,13 @@ export const authAPI = {
     logout() {
         return instance.delete('auth/login')
     }
+}
+
+type MeResponseDataType = {
+    id: number
+    email: string
+    login: string
+}
+type LoginResponseDate={
+    userId: number
 }

@@ -15,6 +15,9 @@ export const getPageSize = (state: AppStateType)=>{
 export const getIsFetching = (state: AppStateType)=>{
     return state.usersPage.isFetching
 }
-export const followingInProcess = (state: AppStateType)=>{
+export const isFollowingInProcess = (state: AppStateType)=>{
     return state.usersPage.followingInProcess
+}
+export const getFilter = (state: AppStateType)=>{
+    return state.usersPage.filter
 }

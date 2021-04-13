@@ -1,11 +1,13 @@
 import s from "./Login.module.css";
 import React, {Component} from "react";
+import {useSelector} from "react-redux";
+import {AppStateType} from "../../redux/redux-store";
 type PropsType={
     formik: any
-    captchaUrl:string
 }
-let LoginFormik: React.ComponentType<PropsType> = ({formik, captchaUrl}) => {
-    console.log(captchaUrl)
+let LoginFormik: React.ComponentType<PropsType> = ({formik}) => {
+    const captchaUrl = useSelector((state:AppStateType)=> state.authReducer.captchaUrl )
+
     return (
         <div className={s.container}>
 

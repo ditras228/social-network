@@ -1,20 +1,20 @@
 import {actions} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-    import {withAutoRedirect} from '../hoc/withAutoRedirect'
+import {withAutoRedirect} from '../hoc/withAutoRedirect'
 import {compose} from "redux";
 import React from "react";
 import {AppStateType} from "../../redux/redux-store";
 
-let mapStateToProps = (state:AppStateType) => {
+let mapStateToProps = (state: AppStateType) => {
+
     return {
-        state: state.dialogsPage,
-        // newMessageBody: state.dialogsPage.newMessageBody,
+        dialogsPage: state.dialogsPage,
     }
 }
 let dispatchToProps = (dispatch: any) => {
     return {
-        messageSend: (text:string) => {
+        messageSend: (text: string) => {
             dispatch(actions.messageSendCreator(text));
         }
     }

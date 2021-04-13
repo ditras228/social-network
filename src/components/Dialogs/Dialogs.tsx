@@ -1,9 +1,9 @@
 import s from './Dialogs.module.css'
-import DialogsItem from "./DialogsItem/DialogsItem"
-import MessageItem from "./MessageItem/MessageItem"
+import DialogsItem from './DialogsItem/DialogsItem'
+import MessageItem from './MessageItem/MessageItem'
 import React from 'react'
-import {useFormik} from "formik"
-import {InitialStateType} from "../../redux/dialogs-reducer"
+import {useFormik} from 'formik'
+import {InitialStateType} from '../../redux/dialogs-reducer'
 
 const Dialogs: React.FC<PropsType> = ({dialogsPage,sendMessage}) => {
     let state= dialogsPage
